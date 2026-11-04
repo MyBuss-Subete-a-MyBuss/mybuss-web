@@ -24,15 +24,12 @@ body {
 }
 
 /* Hace que estos elementos usen la misma fuente del body */
-button,
-input,
-label,
-a,
-p {
-  font-family: inherit;
+button, input, label, a, p {
+  font-family: var(--fuente-texto);
 }
 
 /* ---------- LADO AZUL ---------- */
+
 .informacion {
   flex: 0 0 52%;
   background-color: var(--color-primario);
@@ -44,8 +41,11 @@ p {
 
   .logo {
     font-weight: 700;
-    font-size: 14px;
+    font-size: 23px;
     margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
   }
 
   .contenido {
@@ -79,7 +79,7 @@ p {
     margin: 0 0 16px;
 
     span {
-      color: #b8e3f0;
+      color: var(--color-secundario);
     }
   }
 
