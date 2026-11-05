@@ -1,46 +1,79 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/login.css">
-    <title>Document</title>
+    <link rel="stylesheet" href="../css/tokens.css">
+    <link rel="stylesheet" href="../css/base.css">
+    <title>Iniciar sesión - My Buss</title>
 </head>
 
 <body>
-    <div>
-        <h2>Bienvenido de vuelta</h2>
-        <h1>Tu ruta, en tiempo real.</h1>
-        <p>Entra para ver dónde viene tu bus, la siguiente parada y
-            que tan lleno va.
-        </p>
+    <div class="informacion">
+        <div class="logo">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"><rect x="2" y="2" width="28" height="28" rx="8" stroke="currentColor" stroke-width="2" />
+                <rect x="9" y="8" width="14" height="14" rx="3" fill="currentColor" />
+                <rect x="11" y="10" width="10" height="5" rx="1" style="fill: var(--color-primario)"/>
+                <circle cx="12.5" cy="18.5" r="1.3" style="fill: var(--color-primario)" />
+                <circle cx="19.5" cy="18.5" r="1.3" style="fill: var(--color-primario)" />
+                <rect x="11" y="22" width="3" height="3" rx="1" fill="currentColor" />
+                <rect x="18" y="22" width="3" height="3" rx="1" fill="currentColor" />
+            </svg>
+            <span>My Buss</span>
+        </div>
+
+        <div class="contenido">
+            <h2 class="titulo-principal">BIENVENIDO DE VUELTA</h2>
+            <h1 class="t1">Tu ruta, <span>en tiempo real.</span></h1>
+            <p>Entra para ver dónde viene tu bus, la siguiente parada y qué tan lleno va.</p>
+        </div>
+
+        <p class="pie">Proyecto académico — Tecnológico de Antioquia, 2026</p>
     </div>
 
-    <div class="login">
+    <div class="contenedor-login">
         <form action="">
             <h2>Iniciar sesión</h2>
-            <p>Ingresa tu cooreo o número de identificación</p>
+            <p class="subtitulo">Ingresa tu correo o tu número de identificación.</p>
 
-            <label for="">Correo Electrónico</label>
-            <br>
+            <div class="pestanas">
+                <button type="button" class="activa">Correo</button>
+                <button type="button">Identificación</button>
+            </div>
+
+            <label for="correo">Correo electrónico</label>
             <input type="email" id="correo" placeholder="tucorreo@ejemplo.com">
-            <br>
-            <label for="">Contraseña</label>
-            <input type="password" id="clave" placeholder="Tu contraseña">
-            <br>
-            <input type="checkbox">
-            <label for="">Recordarme</label>
-            <a href="">¿Olvídaste tu contraseña?</a>
-            <br>
-            <button type="submit">Iniciar Sesión</button>
-            <br>
 
-            <p>Póximamente acceso con Google, Apple y otras cuentas</p>
-            <br>
-            <p>¿No tienes cuenta?</p>
-            <a href="registro.html">Registrate</a>
+            <label for="clave">Contraseña</label>
+            <input type="password" id="clave" placeholder="Tu contraseña">
+
+            <div class="opciones">
+                <label class="recordar" for="recordar">
+                    <input type="checkbox" id="recordar"> Recordarme
+                </label>
+                <a href="">¿Olvidaste tu contraseña?</a>
+            </div>
+
+            <button type="submit" class="btn-principal">Iniciar sesión</button>
+
+            <p class="separador">o continúa con</p>
+
+            <div class="sociales">
+                <button type="button">Google</button>
+                <button type="button">Apple</button>
+            </div>
+
+            <p class="nota">Próximamente acceso con Google, Apple y otras cuentas.</p>
+            <p class="registro">¿No tienes cuenta? <a href="">Regístrate</a></p>
+
+            <div class="privacidad">
+                Tus datos se tratan según la Ley 1581 de 2012. Consulta la
+                <a href="">política de privacidad</a>.
+            </div>
         </form>
     </div>
 </body>
+
 </html>

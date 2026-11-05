@@ -1,7 +1,7 @@
 /*Custome propierties*/
 :root {
     --color-primario: #1C5D99; /* Baltic Blue */
-    --color-secundario: #639FAB; /* Pacific Blue */
+    --color-secundario: #BFE3EA; /* Pacific Blue */
     --color-texto: #222222; /* Carbon Black */
     --color-fondo: #FFFFFF;
     --color-disponible: #2E9E5B;
@@ -11,4 +11,3 @@
     --fuente-texto: 'Inter', sans-serif;
     --radio: 12px;
 }
-
