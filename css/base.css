@@ -1,3 +1,5 @@
+/* ---------- AQUIÍ VAN ESTILOS GENERALES ---------- */
+
 * {
   box-sizing: border-box;
 }
@@ -9,13 +11,16 @@ body {
   font-family: var(--fuente-titulos), sans-serif;
 }
 
-/* Hace que estos elementos usen la misma fuente del body */
-button, input, label, a, p {
-  font-family: var(--fuente-texto);
+/* misma fuente del body */
+button,
+input,
+label,
+a,
+p {
+  font-family: inherit;
 }
 
 /* ---------- LADO AZUL ---------- */
-
 .informacion {
   flex: 0 0 52%;
   background-color: var(--color-primario);
@@ -26,12 +31,20 @@ button, input, label, a, p {
   justify-content: space-between;
 
   .logo {
-    font-weight: 700;
-    font-size: 23px;
-    margin: 0;
     display: flex;
     align-items: center;
     gap: 10px;
+    font-weight: 700;
+    font-size: 14px;
+    margin: 0;
+
+    svg {
+      display: block;
+    }
+
+    span {
+      line-height: 1;
+    }
   }
 
   .contenido {
@@ -65,7 +78,7 @@ button, input, label, a, p {
     margin: 0 0 16px;
 
     span {
-      color: var(--color-secundario);
+      color: #b8e3f0;
     }
   }
 
@@ -81,7 +94,7 @@ button, input, label, a, p {
   }
 }
 
-/* ---------- LADO DEL FORMULARIO ---------- */
+/* ---------- FORMULARIO ---------- */
 .contenedor-login {
   flex: 1;
   display: flex;
@@ -108,43 +121,18 @@ button, input, label, a, p {
       margin: 0 0 8px;
     }
 
-    /* Pestañas Correo / Identificación */
+    /* Contenedor de las pestañas Correo / Identificación */
     .pestanas {
       display: flex;
       background: #eef2f7;
       border-radius: 10px;
       padding: 4px;
       margin-bottom: 8px;
-
-      button {
-        flex: 1;
-        padding: 8px;
-        border: none;
-        background: transparent;
-        border-radius: 8px;
-        font-size: 12px;
-        cursor: pointer;
-      }
-
-      .activa {
-        background: #fff;
-        color: var(--color-primario);
-        font-weight: 600;
-      }
     }
 
     label {
       font-weight: 600;
       margin-top: 8px;
-    }
-
-    /* Campos de texto */
-    input[type="email"],
-    input[type="password"] {
-      padding: 12px;
-      border: 1px solid #d1d5db;
-      border-radius: 8px;
-      font-size: 13px;
     }
 
     /* Recordarme y olvidaste tu contraseña */
@@ -153,97 +141,42 @@ button, input, label, a, p {
       justify-content: space-between;
       align-items: center;
       margin: 8px 0;
-
-      .recordar {
-        display: flex;
-        align-items: center;
-        gap: 6px;
-        font-weight: 400;
-        margin: 0;
-      }
-
-      a {
-        color: var(--color-primario);
-        font-weight: 600;
-        text-decoration: none;
-      }
     }
+  }
+}
 
-    /* Botón principal */
-    .btn-principal {
-      padding: 14px;
-      background: var(--color-primario);
-      color: #fff;
-      border: none;
-      border-radius: 8px;
-      font-size: 14px;
-      font-weight: 600;
-      cursor: pointer;
-    }
+.separador {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #6b7280;
+  font-size: 11px;
+  margin: 12px 0 4px;
 
-    /* "o continúa con" con líneas a los lados */
-    .separador {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      color: #6b7280;
-      font-size: 11px;
-      margin: 12px 0 4px;
+  &::before,
+  &::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: #e5e7eb;
+  }
+}
 
-      &::before,
-      &::after {
-        content: "";
-        flex: 1;
-        height: 1px;
-        background: #e5e7eb;
-      }
-    }
+.nota {
+  text-align: center;
+  color: #6b7280;
+  font-size: 11px;
+  margin: 4px 0;
+}
 
-    /* Botones Google y Apple */
-    .sociales {
-      display: flex;
-      gap: 12px;
+.registro {
+  text-align: center;
+  margin: 8px 0;
+  color: #6b7280;
 
-      button {
-        flex: 1;
-        padding: 12px;
-        background: #f3f4f6;
-        border: 1px solid #e5e7eb;
-        border-radius: 8px;
-        cursor: pointer;
-      }
-    }
-
-    .nota {
-      text-align: center;
-      color: #6b7280;
-      font-size: 11px;
-      margin: 4px 0;
-    }
-
-    .registro {
-      text-align: center;
-      margin: 8px 0;
-
-      a {
-        color: var(--color-primario);
-        font-weight: 600;
-        text-decoration: none;
-      }
-    }
-
-    /* Aviso de privacidad */
-    .privacidad {
-      background: #f3f4f6;
-      border-radius: 8px;
-      padding: 12px;
-      font-size: 11px;
-      color: #6b7280;
-
-      a {
-        color: var(--color-primario);
-        font-weight: 600;
-      }
-    }
+  a {
+    color: var(--color-primario);
+    font-weight: 600;
+    text-decoration: none;
   }
 }
