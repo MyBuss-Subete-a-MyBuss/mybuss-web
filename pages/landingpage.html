@@ -4,54 +4,268 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Buss</title>
+    <title>My Buss - Tu ruta, en tiempo real</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../css/tokens.css">
+    <link rel="stylesheet" href="../css/base-landing.css">
+    <link rel="stylesheet" href="../css/components-landing.css">
 </head>
 
 <body>
-    <header>
-        <h1>
-            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"
-                aria-hidden="true">
-                <rect x="2" y="2" width="28" height="28" rx="8" stroke="currentColor" stroke-width="2" />
-                <rect x="9" y="8" width="14" height="14" rx="3" fill="currentColor" />
-                <rect x="11" y="10" width="10" height="5" rx="1" style="fill: var(--color-primario)" />
-                <circle cx="12.5" cy="18.5" r="1.3" style="fill: var(--color-primario)" />
-                <circle cx="19.5" cy="18.5" r="1.3" style="fill: var(--color-primario)" />
-                <rect x="11" y="22" width="3" height="3" rx="1" fill="currentColor" />
-                <rect x="18" y="22" width="3" height="3" rx="1" fill="currentColor" />
-            </svg>My Buss
-            <div>
-                 <h2 class="titulo">Próximamente en el valle del Aburrá</h2>
+    <header class="encabezado">
+        <div class="contenedor">
+            <div class="marca">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true">
+                    <rect x="2" y="2" width="28" height="28" rx="8" stroke="#1C5D99" stroke-width="2" />
+                    <rect x="9" y="8" width="14" height="14" rx="3" fill="#1C5D99" />
+                    <rect x="11" y="10" width="10" height="5" rx="1" style="fill: #ffff" />
+                    <circle cx="12.5" cy="18.5" r="1.3" style="fill: #1C5D99" />
+                    <circle cx="19.5" cy="18.5" r="1.3" style="fill: #1C5D99" />
+                    <rect x="11" y="22" width="3" height="3" rx="1" fill="#1C5D99" />
+                    <rect x="18" y="22" width="3" height="3" rx="1" fill="#1C5D99" />
+                </svg>
+                <a href="#" class="logo">My Buss</a>
+                <span class="etiqueta aviso">Próximamente en el Valle de Aburrá</span>
             </div>
-
             <nav>
-                <a href="">Beneficios</a>
-                <a href="">Cómo funciona</a>
-                <a href="">Cobertura</a>
-                <a href="">Preguntas</a>
+                <a href="#beneficios">Beneficios</a>
+                <a href="#como-funciona">Cómo funciona</a>
+                <a href="#cobertura">Cobertura</a>
+                <a href="#preguntas">Preguntas</a>
             </nav>
-
-            <div>
-                <a href="">Iniciar sesión</a>
-                <a href="">Registrarse</a>
+            <div class="acciones">
+                <a href="login.html" class="boton boton-borde">Iniciar sesión</a>
+                <a href="registro.html" class="boton boton-primario">Registrarse</a>
             </div>
-        </h1>
+        </div>
     </header>
 
     <main>
-        <section>
-            <h2 class="">PARADA 1 - SALIDA</h2>
-            <h1 class="t1">Tu ruta, <span>en tiempo real.</span></h1>
-            <p>Muy pronto sabrás dónde viene tu bus, cuál es la siguiente parada
-                y qué tan lleno va, antes de salir de casa. Pensado para Medellín
-                y todo el Valle de Aburrá.
-            </p>
-            <input type="text" placeholder="tucorreo@ejemplo.com">
-            <button type="submit">Avísame cuando lleguemos</button>
-            <p>Sin spam. Tus datos se tratan según la Ley 1581 de 2012.</p>
+        <section class="hero">
+            <div class="contenedor">
+                <div class="hero-texto">
+                    <span class="etiqueta">Parada 1 · Salida</span>
+                    <h1>Tu ruta, <span>en tiempo real.</span></h1>
+                    <p>Muy pronto sabrás dónde viene tu bus, cuál es la siguiente parada y qué tan lleno va, antes de
+                        salir de casa. Pensado para Medellín y todo el Valle de Aburrá.</p>
+
+                    <form class="campo-correo">
+                        <input type="email" placeholder="tucorreo@ejemplo.com" aria-label="Correo electrónico">
+                        <button type="submit" class="boton boton-primario">Avísame cuando lleguemos</button>
+                    </form>
+                    <p class="nota">Sin spam. Tus datos se tratan según la Ley 1581 de 2012.</p>
+
+                    <div class="progreso">
+                        <p class="progreso-titulo">ESTAMOS EN CAMINO</p>
+                        <ol>
+                            <li class="activo">Diseño</li>
+                            <li>Desarrollo</li>
+                            <li>Pruebas</li>
+                            <li>Lanzamiento</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="maqueta">
+                    <div class="buscador">¿A dónde vas?</div>
+                    <div class="mapa"></div>
+                    <div class="fila">
+                        <span><b>[Ruta]</b> Siguiente parada</span>
+                        <b class="tiempo">4 min</b>
+                    </div>
+                    <div class="barra disponible"><span></span></div>
+                    <div class="fila pequena">
+                        <span>Ocupación</span>
+                        <span class="texto-disponible">Disponible</span>
+                    </div>
+                    <div class="fila pequena">
+                        <span>Siguiente bus</span>
+                        <span>11 min · Medio lleno</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="seccion" id="beneficios">
+            <div class="contenedor">
+                <div class="encabezado-seccion">
+                    <span class="etiqueta">Parada 2 · Beneficios</span>
+                    <h2>Todo lo que necesitas saber antes de subirte</h2>
+                    <p class="subtitulo-beneficios">Información de tu ruta conectada con el Sistema Integrado de
+                        Transporte del
+                        Valle de Aburrá (SITVA).</p>
+                </div>
+                <div class="rejilla">
+                    <article class="tarjeta">
+                        <span class="icono"></span>
+                        <h3>Tu ruta en el mapa</h3>
+                        <p>Mira el recorrido de tu bus y dónde va en este momento.</p>
+                    </article>
+                    <article class="tarjeta">
+                        <span class="icono"></span>
+                        <h3>Siguiente parada y siguiente bus</h3>
+                        <p>Sabrás cuál es la próxima parada y cuánto falta para el bus que viene después del tuyo.</p>
+                    </article>
+                    <article class="tarjeta">
+                        <span class="icono verde"></span>
+                        <h3>Ocupación del bus</h3>
+                        <p>Ve qué tan lleno va y decide si te subes o esperas el siguiente.</p>
+                    </article>
+                    <article class="tarjeta">
+                        <span class="icono"></span>
+                        <h3>Información del conductor</h3>
+                        <p>Consulta los datos del conductor y del vehículo en el que vas a viajar.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="seccion seccion-clara" id="como-funciona">
+            <div class="contenedor">
+                <div class="encabezado-seccion">
+                    <span class="etiqueta">Parada 3 · Cómo funciona</span>
+                    <h2>Tres pasos y vas en camino</h2>
+                </div>
+                <div class="rejilla">
+                    <article class="tarjeta">
+                        <span class="numero">1</span>
+                        <h3>Busca tu destino</h3>
+                        <p>Escribe a dónde vas o elige una parada cercana.</p>
+                    </article>
+                    <article class="tarjeta">
+                        <span class="numero">2</span>
+                        <h3>Elige tu bus</h3>
+                        <p>Compara cuánto falta y qué tan lleno viene cada bus de la ruta.</p>
+                    </article>
+                    <article class="tarjeta">
+                        <span class="numero">3</span>
+                        <h3>Viaja tranquilo</h3>
+                        <p>Sigue el recorrido y entérate de la siguiente parada antes de llegar.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="seccion">
+            <div class="contenedor dos-columnas">
+                <div class="texto-izquierda">
+                    <span class="etiqueta">Parada 4 · Ocupación</span>
+                    <h2>Ya no tendrás que adivinar si vas a ir de pie</h2>
+                    <p class="subtitulo-etiqueta">Cada bus muestra su nivel de ocupación con color y texto, para que
+                        decidas en
+                        segundos.</p>
+                    <div class="leyenda">
+                        <span class="etiqueta disponible">Disponible</span>
+                        <span class="etiqueta medio">Medio lleno</span>
+                        <span class="etiqueta lleno">Lleno</span>
+                    </div>
+                </div>
+
+                <div class="tarjeta">
+                    <p class="ejemplo">EJEMPLO DE VISTA</p>
+                    <h3>Buses que llegan a tu parada</h3>
+                    <div class="fila-bus">
+                        <div class="fila"><span><b>[Ruta A]</b> Llega en 2 min</span><span
+                                class="texto-disponible">Disponible</span></div>
+                        <div class="barra disponible"><span></span></div>
+                    </div>
+                    <div class="fila-bus">
+                        <div class="fila"><span><b>[Ruta B]</b> Llega en 6 min</span><span class="texto-medio">Medio
+                                lleno</span></div>
+                        <div class="barra medio"><span></span></div>
+                    </div>
+                    <div class="fila-bus">
+                        <div class="fila"><span><b>[Ruta C]</b> Llega en 11 min</span><span
+                                class="texto-lleno">Lleno</span></div>
+                        <div class="barra lleno"><span></span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="seccion seccion-clara" id="cobertura">
+            <div class="contenedor">
+                <div class="encabezado-seccion">
+                    <span class="etiqueta">Parada 5 · Cobertura</span>
+                    <h2>Pensado para todo el Valle de Aburrá</h2>
+                    <p class="subtitulo-municipios">Los diez municipios del área metropolitana, conectados a través del
+                        SITVA.</p>
+                </div>
+                <div class="municipios">
+                    <span class="municipio">Medellín</span>
+                    <span class="municipio">Bello</span>
+                    <span class="municipio">Itagüí</span>
+                    <span class="municipio">Envigado</span>
+                    <span class="municipio">Sabaneta</span>
+                    <span class="municipio">La Estrella</span>
+                    <span class="municipio">Caldas</span>
+                    <span class="municipio">Copacabana</span>
+                    <span class="municipio">Girardota</span>
+                    <span class="municipio">Barbosa</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="seccion" id="preguntas">
+            <div class="contenedor">
+                <div class="encabezado-seccion">
+                    <span class="etiqueta">Parada 6 · Preguntas</span>
+                    <h2>Preguntas frecuentes</h2>
+                </div>
+                <div class="faq">
+                    <details>
+                        <summary>¿Cuándo estará disponible My Buss?</summary>
+                        <p>Estamos en etapa de diseño. Déjanos tu correo y te avisamos cuando lancemos.</p>
+                    </details>
+                    <details>
+                        <summary>¿Qué información voy a ver?</summary>
+                        <p>La ruta del bus, la siguiente parada, el siguiente bus, la ocupación y los datos del
+                            conductor.</p>
+                    </details>
+                    <details>
+                        <summary>¿Necesito instalar algo?</summary>
+                        <p>Por ahora no tenemos esa información definida.</p>
+                    </details>
+                    <details>
+                        <summary>¿Cómo protegen mis datos?</summary>
+                        <p>Tus datos se tratan según la Ley 1581 de 2012.</p>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-final">
+            <div class="contenedor">
+                <span class="etiqueta">Parada 7 · Destino</span>
+                <h2>Súbete antes que nadie.</h2>
+                <p>Déjanos tu correo y sé de los primeros en probar My Buss.</p>
+                <form class="campo-correo centrado">
+                    <input type="email" placeholder="tucorreo@ejemplo.com" aria-label="Correo electrónico">
+                    <button type="submit" class="boton boton-primario">Unirme a la lista</button>
+                </form>
+            </div>
         </section>
     </main>
 
+    <footer class="pie">
+        <div class="contenedor">
+            <div class="pie-superior">
+                <div>
+                    <a href="#" class="logo">My Buss</a>
+                    <p>Tu ruta, en tiempo real. Información de buses para Medellín y el Valle de Aburrá.</p>
+                </div>
+                <nav>
+                    <a href="#">Política de privacidad</a>
+                    <a href="#">Términos</a>
+                    <a href="#">Contacto</a>
+                </nav>
+            </div>
+            <p class="pie-legal">Proyecto académico — Tecnológico de Antioquia, 2026</p>
+        </div>
+    </footer>
 </body>
 
 </html>
