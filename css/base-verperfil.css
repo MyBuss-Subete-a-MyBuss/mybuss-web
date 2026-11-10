@@ -1,0 +1,187 @@
+/* ---------- GENERALES ---------- */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--fuente-texto);
+  color: var(--color-texto);
+  background: var(--color-fondo);
+  line-height: 1.5;
+}
+
+button, input, label, a, p, small {
+  font-family: inherit;
+}
+
+h1, h2, h3 {
+  font-family: var(--fuente-titulos);
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.contenedor {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.logo {
+  display: inline-flex;   /* ícono y texto quedan en la misma fila, juntos */
+  align-items: center;    /* los centra verticalmente */
+  gap: 8px;               /* separación entre el ícono y "My Buss" */
+  font-family: var(--fuente-titulos);
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--color-primario);
+
+  svg {
+    display: block;
+  }
+}
+
+/* ---------- ENCABEZADO ---------- */
+.encabezado {
+  padding: 16px 0;
+
+  .contenedor {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+  }
+
+  nav {
+    display: flex;
+    gap: 16px;
+    font-size: 11px;
+  }
+}
+
+.encabezado.app {
+  padding: 14px 0;
+  border-bottom: 1px solid #ecf0f8;
+
+  nav {
+    font-size: 13px;
+    gap: 20px;
+
+    .activo {
+      color: var(--color-primario);
+      font-weight: 600;
+    }
+  }
+}
+
+/* ---------- PÁGINA DE PERFIL ---------- */
+
+/* Fondo claro de toda la pantalla */
+.pagina-perfil {
+  background: #f5f9fc;
+}
+
+/* Títulos más suaves, como en el diseño */
+.pagina-perfil h1, .pagina-perfil h2 {
+  font-weight: 600;
+}
+
+.perfil {
+  padding: 32px 0 80px;
+}
+
+.contenedor-perfil {
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: grid;
+  gap: 16px;
+}
+
+.perfil-titulo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  h1 {
+    font-size: 28px;
+  }
+}
+
+/* Datos del usuario en la cabecera */
+.cabecera-perfil {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  .datos-usuario {
+    flex: 1;
+
+    h2 {
+      font-size: 17px;
+    }
+
+    p {
+      font-size: 12px;
+      color: #4b5563;
+      margin-top: 2px;
+    }
+
+    small {
+      font-size: 10px;
+      color: #6b7280;
+    }
+  }
+
+  .acciones-foto {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+}
+
+/* Títulos y acomodo de las tarjetas */
+.titulo-tarjeta {
+  font-size: 15px;
+  color: var(--color-primario);
+  margin-bottom: 16px;
+}
+
+.rejilla-campos {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.campo label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.fila-tarjeta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+
+  .titulo-tarjeta {
+    margin-bottom: 4px;
+  }
+
+  p {
+    font-size: 11px;
+    color: #6b7280;
+  }
+}
