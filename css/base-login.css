@@ -12,11 +12,7 @@ body {
 }
 
 /* misma fuente del body */
-button,
-input,
-label,
-a,
-p {
+button, input, label, a, p {
   font-family: inherit;
 }
 
@@ -31,19 +27,17 @@ p {
   justify-content: space-between;
 
   .logo {
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    gap: 10px;
-    font-weight: 700;
-    font-size: 14px;
-    margin: 0;
+    gap: 8px;
+    font-family: var(--fuente-titulos);
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--color-fondo);
+    text-decoration: none;
 
     svg {
       display: block;
-    }
-
-    span {
-      line-height: 1;
     }
   }
 
