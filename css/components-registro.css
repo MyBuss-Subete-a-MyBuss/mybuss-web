@@ -1,0 +1,188 @@
+/* COMPONENTES REUTILIZABLES: botones, inputs y tarjetas */
+
+
+/* Botón principal */
+.btn-principal {
+  padding: 14px;
+  background: var(--color-primario);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* Pestañas Correo / Identificación */
+.pestanas {
+  display: flex;
+  background: #eef2f7;
+  border-radius: 10px;
+  padding: 4px;
+  margin-bottom: 8px;
+}
+
+.pestanas button {
+  flex: 1;
+  padding: 8px;
+  border: none;
+  background: transparent;
+  border-radius: 8px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.pestanas .activa {
+  background: #fff;
+  color: var(--color-primario);
+  font-weight: 600;
+}
+
+/* Botones Google y Apple */
+.sociales button {
+  flex: 1;
+  padding: 12px;
+  background: #f3f4f6;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* ---------------------------------------------------------
+   INPUTS
+   --------------------------------------------------------- */
+
+/* Campo: label arriba, input abajo */
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.campo label {
+  margin-top: 0;
+  font-size: 11px;
+}
+
+/* Inputs de todos los tipos */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="tel"],
+input[type="date"],
+select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 13px;
+  font-family: inherit;
+  background: #fff;
+}
+
+input::placeholder {
+  color: #9aa5b0;
+}
+
+/* Borde azul al hacer clic en un campo */
+input:focus,
+select:focus {
+  outline: none;
+  border-color: var(--color-primario);
+}
+
+/* Textos pequeños de ayuda */
+.ayuda {
+  font-size: 11px;
+  color: #6b7280;
+}
+
+/* Celular con el +57 */
+.telefono {
+  display: flex;
+  gap: 8px;
+}
+
+.prefijo {
+  display: flex;
+  align-items: center;
+  padding: 0 14px;
+  background: #eef2f7;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.telefono input {
+  flex: 1;
+}
+
+/* Contraseña con el ojito */
+.campo-password {
+  position: relative;
+}
+
+.campo-password input {
+  padding-right: 40px;
+}
+
+.ver-password {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+/* ---------------------------------------------------------
+   TARJETAS
+   --------------------------------------------------------- */
+
+/* Aviso de privacidad */
+.privacidad {
+  background: #f3f4f6;
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 11px;
+  color: #6b7280;
+}
+
+.privacidad a {
+  color: var(--color-primario);
+  font-weight: 600;
+}
+
+/* Cuadro gris con los checkboxes */
+.acuerdos {
+  background: #f3f6fa;
+  border-radius: 8px;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.check {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 0;
+  font-size: 11px;
+  font-weight: 400;
+  color: #4b5563;
+}
+
+.check input {
+  margin-top: 2px;
+}
+
+.check a {
+  color: var(--color-primario);
+  font-weight: 600;
+}

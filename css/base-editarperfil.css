@@ -1,0 +1,99 @@
+/* ===== BASE: reset, página, barra superior y layout ===== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--fuente-texto);
+  background-color: #f5f7fa;
+  color: var(--color-texto);
+  padding-bottom: 40px;
+}
+
+h1, h2, h3 {
+  font-family: var(--fuente-titulos);
+}
+
+p {
+  font-size: 13px;
+  color: #6b7280;
+}
+
+small {
+  font-size: 11px;
+  color: #6b7280;
+}
+
+/* Si un elemento tiene "hidden", que de verdad se esconda */
+[hidden] {
+  display: none !important;
+}
+
+/* ----- Barra superior: logo | menú centrado | avatar ----- */
+.navbar {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  background-color: var(--color-fondo);
+  border-bottom: 1px solid #e5e7eb;
+  padding: 12px 32px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--color-primario);   /* el SVG toma este color con currentColor */
+  font-family: var(--fuente-titulos);
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.logo svg {
+  flex-shrink: 0;
+}
+
+.menu {
+  display: flex;
+  gap: 24px;
+}
+
+.menu a {
+  color: var(--color-texto);
+  text-decoration: none;
+  font-size: 13px;
+}
+
+.menu a:hover,
+.menu a.activo {
+  color: var(--color-primario);
+}
+
+.menu a.activo {
+  font-weight: 600;
+}
+
+.navbar .avatar {
+  justify-self: end;   /* manda el avatar a la derecha */
+}
+
+/* ----- Contenido centrado ----- */
+main {
+  width: 90%;
+  max-width: 760px;
+  margin: 32px auto 0;
+}
+
+.titulo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+h1 {
+  font-size: 28px;
+}
