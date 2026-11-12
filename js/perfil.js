@@ -1,10 +1,15 @@
+window.addEventListener('pageshow', (e) => {
+  if (e.persisted && !localStorage.getItem('usuarioLogueado')) {
+    window.location.replace('login.html');
+  }
+});
+
 document.addEventListener('DOMContentLoaded', async () => {
   // 1. Verificar que exista sesión activa en localStorage
   const usuarioGuardado = localStorage.getItem('usuarioLogueado');
 
   if (!usuarioGuardado) {
-    alert('No has iniciado sesión. Serás redirigido al login.');
-    window.location.href = 'login.html';
+    window.location.replace('login.html');
     return;
   }
 
@@ -16,6 +21,11 @@ document.addEventListener('DOMContentLoaded', async () => {
   const btnCancelar = document.getElementById('btn-cancelar');
   const accionesEdicion = document.getElementById('acciones-edicion');
   const formPerfil = document.getElementById('form-perfil');
+  const btnEliminar = document.querySelector('.btn-rojo');
+  const modalEliminar = document.getElementById('modal-eliminar');
+  const btnCancelarEliminar = document.getElementById('btn-cancelar-eliminar');
+  const btnConfirmarEliminar = document.getElementById('btn-confirmar-eliminar');
+  const mensajePerfil = document.getElementById('mensaje-perfil');
 
   // Inputs editables
   const inputNombres = document.getElementById('nombres');
@@ -95,6 +105,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   // 5. Cancelar edición
   btnCancelar.addEventListener('click', () => {
+    mensajePerfil.textContent = '';
     cargarDatosEnPantalla(usuario);
     bloquearCampos();
   });
@@ -113,12 +124,30 @@ document.addEventListener('DOMContentLoaded', async () => {
   formPerfil.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    const datosActualizados = {
+    const botonGuardar = formPerfil.querySelector('button[type="submit"]');
+    mensajePerfil.textContent = '';
+
+    const campos = {
       nombre: inputNombres.value.trim(),
       apellido: inputApellidos.value.trim(),
       correo: inputCorreo.value.trim(),
       celular: inputCelular.value.trim()
     };
+
+    const datosActualizados = {};
+    for (const campo in campos) {
+      if (campos[campo] !== '' && campos[campo] !== usuario[campo]) {
+        datosActualizados[campo] = campos[campo];
+      }
+    }
+
+    if (Object.keys(datosActualizados).length === 0) {
+      mensajePerfil.textContent = 'No hay cambios para guardar.';
+      return;
+    }
+
+    botonGuardar.disabled = true;
+    botonGuardar.classList.add('cargando');
 
     try {
       const response = await fetch(`http://localhost:8080/api/usuario/${idUsuario}`, {
@@ -136,14 +165,71 @@ document.addEventListener('DOMContentLoaded', async () => {
         
         cargarDatosEnPantalla(usuario);
         bloquearCampos();
-        alert('¡Datos actualizados con éxito!');
+      } else if (response.status === 404) {
+        mensajePerfil.textContent = 'El usuario no fue encontrado en la base de datos.';
       } else {
-        alert('No se pudieron actualizar los datos. Verifica la información ingresada.');
+        mensajePerfil.textContent = 'No se pudieron actualizar los datos. Verifica la información ingresada.';
       }
     } catch (error) {
       console.error('Error de red:', error);
-      alert('Error de conexión con el servidor de My Buss.');
+      mensajePerfil.textContent = 'Error de conexión con el servidor de My Buss.';
     }
+
+    botonGuardar.disabled = false;
+    botonGuardar.classList.remove('cargando');
+  });
+
+  function cerrarModal() {
+    if (!btnConfirmarEliminar.disabled) {
+      modalEliminar.hidden = true;
+    }
+  }
+
+  btnEliminar.addEventListener('click', () => {
+    mensajePerfil.textContent = '';
+    modalEliminar.hidden = false;
+  });
+
+  btnCancelarEliminar.addEventListener('click', cerrarModal);
+
+  modalEliminar.addEventListener('click', (e) => {
+    if (e.target === modalEliminar) {
+      cerrarModal();
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !modalEliminar.hidden) {
+      cerrarModal();
+    }
+  });
+
+  btnConfirmarEliminar.addEventListener('click', async () => {
+    btnConfirmarEliminar.disabled = true;
+    btnCancelarEliminar.disabled = true;
+    btnConfirmarEliminar.classList.add('cargando');
+
+    try {
+      const response = await fetch(`http://localhost:8080/api/usuario/${idUsuario}`, {
+        method: 'DELETE'
+      });
+
+      if (response.ok || response.status === 404) {
+        localStorage.removeItem('usuarioLogueado');
+        window.location.replace('landingpage.html');
+        return;
+      }
+
+      mensajePerfil.textContent = 'No se pudo eliminar la cuenta. Intenta de nuevo.';
+    } catch (error) {
+      console.error('Error de red:', error);
+      mensajePerfil.textContent = 'Error de conexión con el servidor de My Buss.';
+    }
+
+    btnConfirmarEliminar.disabled = false;
+    btnCancelarEliminar.disabled = false;
+    btnConfirmarEliminar.classList.remove('cargando');
+    modalEliminar.hidden = true;
   });
 });
 
