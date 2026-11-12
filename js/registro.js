@@ -23,7 +23,7 @@ document.getElementById('registroForm').addEventListener('submit', async (e) => 
     aceptaTerminos: document.getElementById('terminos').checked,
     autorizaDatos: document.getElementById('terminos').checked,
     recibirNovedades: document.getElementById('novedades').checked,
-    contrasena_hash: password    
+    contrasena: password    
   };
 
   try {
