@@ -1,0 +1,218 @@
+/* 
+   LAYOUT DE LAS PÁGINAS DE LOGIN Y REGISTRO
+   (los botones, inputs y tarjetas están en componentes.css)
+    */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  min-height: 100vh;
+  margin: 0;
+  font-family: var(--fuente-titulos), sans-serif;
+}
+
+/* Hace que estos elementos usen la misma fuente del body */
+button, input, label, a, p {
+  font-family: var(--fuente-texto);
+}
+
+/* Label general del formulario.
+   :where() deja su especificidad en cero para que
+   .campo label y .check (en componentes.css) lo puedan sobreescribir. */
+:where(.contenedor-login form) label {
+  font-weight: 600;
+  margin-top: 8px;
+}
+
+/* ---------- LADO AZUL ---------- */
+
+.informacion {
+  flex: 0 0 52%;
+  background-color: var(--color-primario);
+  color: var(--color-fondo);
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  .logo {
+    font-weight: 700;
+    font-size: 23px;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .contenido {
+    max-width: 300px;
+  }
+
+  .titulo-principal {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 50px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin: 0 0 12px;
+
+    &::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      background: var(--color-fondo);
+      border-radius: 50%;
+    }
+  }
+
+  .t1 {
+    font-size: 36px;
+    line-height: 1.1;
+    margin: 0 0 16px;
+
+    span {
+      color: var(--color-secundario);
+    }
+  }
+
+  p {
+    font-size: 13px;
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  .pie {
+    font-size: 11px;
+    opacity: 0.7;
+  }
+}
+
+/* ---------- LADO DEL FORMULARIO ---------- */
+
+.contenedor-login {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+
+  form {
+    width: 100%;
+    max-width: 380px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 13px;
+
+    h2 {
+      font-family: var(--fuente-titulos);
+      font-size: 24px;
+      margin: 0;
+    }
+
+    .subtitulo {
+      color: #6b7280;
+      margin: 0 0 8px;
+    }
+
+    /* Recordarme y olvidaste tu contraseña */
+    .opciones {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 8px 0;
+
+      .recordar {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-weight: 400;
+        margin: 0;
+      }
+
+      a {
+        color: var(--color-primario);
+        font-weight: 600;
+        text-decoration: none;
+      }
+    }
+
+    /* Separación del botón principal */
+    .btn-principal {
+      margin-top: 8px;
+    }
+
+    /* "o continúa con" con líneas a los lados */
+    .separador {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: #6b7280;
+      font-size: 11px;
+      margin: 12px 0 4px;
+
+      &::before,
+      &::after {
+        content: "";
+        flex: 1;
+        height: 1px;
+        background: #e5e7eb;
+      }
+    }
+
+    /* Contenedor de Google y Apple */
+    .sociales {
+      display: flex;
+      gap: 12px;
+    }
+
+    .nota {
+      text-align: center;
+      color: #6b7280;
+      font-size: 11px;
+      margin: 4px 0;
+    }
+
+    .registro {
+      text-align: center;
+      margin: 8px 0;
+
+      a {
+        color: var(--color-primario);
+        font-weight: 600;
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+/* ---------- REGISTRO ---------- */
+
+/* Sección (Datos personales, Contacto, Seguridad) */
+.contenedor-login form .seccion {
+  border: none;
+  padding: 0;
+  margin: 0 0 12px;
+  min-width: 0;
+}
+
+.contenedor-login form .seccion-titulo {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-primario);
+  margin-bottom: 4px;
+}
+
+/* Dos campos lado a lado (Nombres / Apellidos) */
+.contenedor-login form .fila {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
