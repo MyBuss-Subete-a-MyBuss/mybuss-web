@@ -133,10 +133,17 @@ select:focus {
   right: 10px;
   top: 50%;
   transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  padding: 0;
   background: none;
   border: none;
   cursor: pointer;
-  font-size: 14px;
+  color: #6b7280;
+}
+
+.ver-password:hover {
+  color: var(--color-primario);
 }
 
 /* ---------------------------------------------------------
@@ -185,4 +192,32 @@ select:focus {
 .check a {
   color: var(--color-primario);
   font-weight: 600;
+}
+button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.cargando::before {
+  content: "";
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin-right: 8px;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  vertical-align: middle;
+  animation: girar 0.7s linear infinite;
+}
+
+@keyframes girar {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+#mensaje-error {
+  color: var(--color-lleno);
+  font-size: 12px;
 }

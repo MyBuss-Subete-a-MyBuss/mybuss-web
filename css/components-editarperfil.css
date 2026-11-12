@@ -121,7 +121,7 @@
 .campo input {
   width: 100%;
   padding: 11px 12px;
-  border: 1px solid #d1d5db;
+  border: 1px solid #a9c6e3;
   border-radius: 8px;
   background-color: var(--color-fondo);
   font-size: 13px;
@@ -193,27 +193,99 @@ button {
   background-color: #fdeeee;
 }
 
-/* Guardar / Cancelar (aparecen al editar) */
+/* Barra "Estás editando tu perfil" (aparece al editar) */
 .acciones {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  background-color: var(--color-fondo);
+  border: 1px solid #e5e7eb;
+  border-radius: var(--radio);
+  padding: 14px 20px;
+  margin-bottom: 16px;
+  box-shadow: 0 6px 18px rgba(28, 93, 153, 0.15);   /* la sombra azulada del diseño */
+}
+
+.acciones p {
+  font-size: 11px;
+}
+
+.acciones-botones {
+  display: flex;
+  gap: 8px;
+}
+
+/* Texto de ayuda debajo de un campo */
+.campo small {
+  display: block;
+  margin-top: 6px;
+  line-height: 1.4;
+}
+button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.cargando::before {
+  content: "";
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin-right: 8px;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  vertical-align: middle;
+  animation: girar 0.7s linear infinite;
+}
+
+@keyframes girar {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+#mensaje-perfil {
+  color: var(--color-lleno);
+  font-size: 12px;
+  margin-bottom: 12px;
+}
+
+.btn-rojo-lleno {
+  background-color: var(--color-lleno);
+  border: 1px solid var(--color-lleno);
+  color: var(--color-fondo);
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background-color: rgba(15, 23, 42, 0.5);
+  z-index: 100;
+}
+
+.modal-contenido {
+  width: 100%;
+  max-width: 400px;
+  background-color: var(--color-fondo);
+  border-radius: var(--radio);
+  padding: 24px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.modal-contenido p {
+  margin: 8px 0 20px;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.modal-botones {
   display: flex;
   justify-content: flex-end;
   gap: 8px;
-  margin-bottom: 16px;
-}
-
-/* ---------- Pantallas chicas ---------- */
-@media (max-width: 700px) {
-  .grid {
-    grid-template-columns: 1fr;
-  }
-
-  .usuario,
-  .fila {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .navbar {
-    padding: 12px 16px;
-  }
 }
