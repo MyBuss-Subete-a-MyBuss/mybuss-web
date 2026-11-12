@@ -42,7 +42,7 @@
   <!-- ========== CONTENIDO ========== -->
   <main>
 
-    <!-- Título -->
+    <!-- Título (el botón "Editar perfil" está oculto en modo edición) -->
     <div class="titulo">
       <h1>Mi perfil</h1>
       <button type="button" id="btn-editar" class="btn-azul" hidden>Editar perfil</button>
@@ -94,7 +94,7 @@
           </div>
           <div class="campo">
             <label for="nacimiento">Fecha de nacimiento</label>
-            <input type="text" id="nacimiento" value="14/05/2004 · 22 años">
+            <input type="text" id="nacimiento" value="14/05/2004 · 22 años" readonly>
           </div>
         </div>
       </section>
@@ -114,8 +114,8 @@
         </div>
       </section>
 
-      <!-- Barra de edición: se muestra solo al presionar "Editar perfil" -->
-      <div id="acciones-edicion" class="acciones" hidden>
+      <!-- Barra de edición (visible) -->
+      <div id="acciones-edicion" class="acciones">
         <p>Estás editando tu perfil.</p>
         <div class="acciones-botones">
           <button type="button" id="btn-cancelar" class="btn-borde">Cancelar</button>
