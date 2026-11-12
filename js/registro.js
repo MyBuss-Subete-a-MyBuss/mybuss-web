@@ -19,14 +19,17 @@ document.getElementById('registroForm').addEventListener('submit', async (e) => 
     fechaNacimiento: document.getElementById('fecha').value,
     correo: document.getElementById('correo').value,
     celular: document.getElementById('celular').value,
-    contrasena_hash: password,
-    recibirNovedades: document.getElementById('novedades').checked
+    fotoUrl: null,
+    aceptaTerminos: document.getElementById('terminos').checked,
+    autorizaDatos: document.getElementById('terminos').checked,
+    recibirNovedades: document.getElementById('novedades').checked,
+    contrasena_hash: password    
   };
 
   try {
     //Enviar la petición HTTP POST a tu API de Java
     //Reemplaza la URL por el endpoint real de tu backend
-    const response = await fetch('http://localhost:8080/api/usuario/registrar', {
+    const response = await fetch('http://localhost:8080/api/auth/registro', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -36,12 +39,11 @@ document.getElementById('registroForm').addEventListener('submit', async (e) => 
 
     //Manejar la respuesta del servidor
     if (response.ok) {
-      const resultado = await response.json();
       alert('¡Cuenta creada con éxito!');
       window.location.href = 'login.html'; // Redirecciona al login
     } else {
-      const errorData = await response.json();
-      alert('Error en el registro: ' + (errorData.mensaje || 'Inténtalo de nuevo.'));
+      const errorData = await response.json().catch(() => ({}));
+      alert('Error en el registro: ' + (errorData.mensaje || errorData.message || 'Verifica los datos ingresados.'));
     }
 
   } catch (error) {
