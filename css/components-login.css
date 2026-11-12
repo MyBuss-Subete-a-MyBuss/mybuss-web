@@ -71,4 +71,8 @@ input[type="password"] {
         color: var(--color-primario);
         font-weight: 600;
     }
+    #mensaje-error {
+        color: var(--color-lleno);
+        font-size: 12px;
+    }
 }
