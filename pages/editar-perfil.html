@@ -20,7 +20,7 @@
   <!-- ========== BARRA SUPERIOR ========== -->
   <header class="navbar">
 
-    <div class="logo">
+    <a href="landingpage.html" class="logo" style="text-decoration: none;">
       <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <rect x="2" y="2" width="28" height="28" rx="8" stroke="currentColor" stroke-width="2" />
         <rect x="9" y="8" width="14" height="14" rx="3" fill="currentColor" />
@@ -31,26 +31,29 @@
         <rect x="18" y="22" width="3" height="3" rx="1" fill="currentColor" />
       </svg>
       <span>My Buss</span>
-    </div>
+    </a>
 
     <nav class="menu">
-      <a href="mapa.html">Mapa</a>
-      <a href="rutas.html">Rutas</a>
+      <a href="">Mapa</a>
+      <a href="">Rutas</a>
       <a href="editar-perfil.html" class="activo">Mi perfil</a>
     </nav>
 
     <span class="avatar">LG</span>
+    </div>
 
   </header>
 
   <!-- ========== CONTENIDO ========== -->
   <main>
 
-    <!-- Título -->
+    <!-- Título (el botón "Editar perfil" está oculto en modo edición) -->
     <div class="titulo">
       <h1>Mi perfil</h1>
       <button type="button" id="btn-editar" class="btn-azul">Editar perfil</button>
     </div>
+
+    <p id="mensaje-perfil" role="alert"></p>
 
     <!-- Foto y nombre -->
     <section class="tarjeta usuario">
@@ -80,6 +83,7 @@
     <!-- Datos editables -->
     <form id="form-perfil">
 
+      <!-- Datos personales -->
       <section class="tarjeta">
         <h3>Datos personales</h3>
         <div class="grid">
@@ -94,6 +98,7 @@
           <div class="campo">
             <label for="documento">Documento</label>
             <input type="text" id="documento" value="Cédula de ciudadanía · 1020304050" readonly>
+            <small>Este dato no se puede editar. Si hay un error, contacta a soporte.</small>
           </div>
           <div class="campo">
             <label for="nacimiento">Fecha de nacimiento</label>
@@ -102,6 +107,7 @@
         </div>
       </section>
 
+      <!-- Contacto -->
       <section class="tarjeta">
         <h3>Contacto</h3>
         <div class="grid">
@@ -116,22 +122,25 @@
         </div>
       </section>
 
-      <!-- Se muestran solo al presionar "Editar perfil" -->
+      <!-- Barra de edición (visible) -->
       <div id="acciones-edicion" class="acciones" hidden>
-        <button type="button" id="btn-cancelar" class="btn-borde">Cancelar</button>
-        <button type="submit" class="btn-azul-lleno">Guardar cambios</button>
+        <p>Estás editando tu perfil.</p>
+        <div class="acciones-botones">
+          <button type="button" id="btn-cancelar" class="btn-borde">Cancelar</button>
+          <button type="submit" class="btn-azul-lleno">Guardar cambios</button>
+        </div>
       </div>
 
     </form>
 
     <!-- Seguridad -->
-    <section class="tarjeta fila">
+    <!-- <section class="tarjeta fila">
       <div>
         <h3>Seguridad</h3>
         <p>Cambia tu contraseña cuando lo necesites.</p>
       </div>
       <button type="button" class="btn-borde">Cambiar contraseña</button>
-    </section>
+    </section> -->
 
     <!-- Eliminar cuenta -->
     <section class="tarjeta fila peligro">
@@ -143,6 +152,17 @@
     </section>
 
   </main>
+
+  <div id="modal-eliminar" class="modal" hidden>
+    <div class="modal-contenido" role="dialog" aria-modal="true" aria-labelledby="modal-titulo">
+      <h3 id="modal-titulo">¿Eliminar tu cuenta?</h3>
+      <p>Se borrarán tu cuenta y tus datos personales. Esta acción no se puede deshacer.</p>
+      <div class="modal-botones">
+        <button type="button" id="btn-cancelar-eliminar" class="btn-borde">Cancelar</button>
+        <button type="button" id="btn-confirmar-eliminar" class="btn-rojo-lleno">Sí, eliminar</button>
+      </div>
+    </div>
+  </div>
 </body>
 
 </html>
