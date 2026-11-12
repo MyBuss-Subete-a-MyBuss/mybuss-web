@@ -1,5 +1,5 @@
-document.addEventListener('DOMContentLoaded', () => {
-  // 1. Obtener el usuario logueado desde localStorage
+document.addEventListener('DOMContentLoaded', async () => {
+  // 1. Verificar que exista sesión activa en localStorage
   const usuarioGuardado = localStorage.getItem('usuarioLogueado');
 
   if (!usuarioGuardado) {
@@ -23,17 +23,15 @@ document.addEventListener('DOMContentLoaded', () => {
   const inputCorreo = document.getElementById('correo');
   const inputCelular = document.getElementById('celular');
 
-  // Inputs solo lectura (datos fijos en esta vista)
+  // Inputs solo lectura
   const inputDocumento = document.getElementById('documento');
   const inputNacimiento = document.getElementById('nacimiento');
 
-  // 2. Función para pintar los datos reales del usuario en la pantalla
+  // 2. Función para pintar los datos en la pantalla
   function cargarDatosEnPantalla(datos) {
-    // Iniciales para los avatares
     const iniciales = `${datos.nombre?.charAt(0) || ''}${datos.apellido?.charAt(0) || ''}`.toUpperCase();
     document.querySelectorAll('.avatar').forEach(el => el.textContent = iniciales);
 
-    // Encabezado de la tarjeta principal
     document.querySelector('.datos h2').textContent = `${datos.nombre} ${datos.apellido}`;
     document.querySelector('.datos p').textContent = datos.correo;
     
@@ -44,7 +42,6 @@ document.addEventListener('DOMContentLoaded', () => {
       document.querySelector('.datos small').textContent = `Miembro desde ${fechaFormateada}`;
     }
 
-    // Valores de los inputs
     inputNombres.value = datos.nombre || '';
     inputApellidos.value = datos.apellido || '';
     inputDocumento.value = `${datos.tipoDocumento || ''} · ${datos.numeroDocumento || ''}`;
@@ -53,10 +50,38 @@ document.addEventListener('DOMContentLoaded', () => {
     inputCelular.value = datos.celular || '';
   }
 
-  // Cargar datos iniciales al abrir la página
+  // Pintar datos locales primero mientras responde el servidor
   cargarDatosEnPantalla(usuario);
 
-  // 3. Habilitar modo edición al hacer clic en "Editar perfil"
+  // 3. Consultar datos actualizados desde la API (GET /api/usuario/{id})
+  async function obtenerUsuarioDesdeAPI() {
+    try {
+      const response = await fetch(`http://localhost:8080/api/usuario/${idUsuario}`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+
+      if (response.ok) {
+        const datosFrescos = await response.json();
+        usuario = datosFrescos;
+        localStorage.setItem('usuarioLogueado', JSON.stringify(usuario));
+        cargarDatosEnPantalla(usuario);
+      } else if (response.status === 404) {
+        alert('El usuario no fue encontrado en la base de datos.');
+      } else {
+        console.error('Error al obtener los datos del usuario:', response.status);
+      }
+    } catch (error) {
+      console.error('Error de red al consultar el usuario:', error);
+    }
+  }
+
+  // Ejecutar la consulta GET apenas abre la página
+  await obtenerUsuarioDesdeAPI();
+
+  // 4. Habilitar modo edición
   btnEditar.addEventListener('click', () => {
     inputNombres.removeAttribute('readonly');
     inputApellidos.removeAttribute('readonly');
@@ -68,7 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
     btnEditar.hidden = true;
   });
 
-  // 4. Cancelar edición y restaurar valores originales
+  // 5. Cancelar edición
   btnCancelar.addEventListener('click', () => {
     cargarDatosEnPantalla(usuario);
     bloquearCampos();
@@ -84,7 +109,7 @@ document.addEventListener('DOMContentLoaded', () => {
     btnEditar.hidden = false;
   }
 
-  // 5. Enviar cambios al endpoint PATCH /api/usuario/{id}
+  // 6. Enviar cambios al endpoint PATCH /api/usuario/{id}
   formPerfil.addEventListener('submit', async (e) => {
     e.preventDefault();
 
@@ -106,8 +131,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (response.ok) {
         const usuarioRespuesta = await response.json();
-        
-        // Actualizar la sesión local con los nuevos datos
         usuario = usuarioRespuesta;
         localStorage.setItem('usuarioLogueado', JSON.stringify(usuario));
         
@@ -123,3 +146,4 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
+
